@@ -15,7 +15,8 @@ for subdir, dirs, files in os.walk(rootdir):
         if (re.search("[0-9]{3,4}",file)):
             res = re.search("[0-9]{3,4}",file)
             period = re.search(".jpg",file)
-            path = os.path.dirname(subdir)
-            newfile = f"suite_{os.path.basename(path).lower()}_{file[res.start():period.start()]}.jpg"
+            path = subdir
+            path = os.path.basename(path)
+            newfile = f"{path.lower()}_{file[res.start():period.start()]}.jpg"
 
             os.rename(f"{subdir}\{file}", f"{subdir}\{newfile}")
